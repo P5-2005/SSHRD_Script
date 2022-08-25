@@ -170,7 +170,7 @@ fi
 cd ..
 "$oscheck"/gaster decrypt work/"$(awk "/"${replace}"/{x=1}x&&/iBSS[.]/{print;exit}" work/BuildManifest.plist | grep '<string>' |cut -d\> -f2 |cut -d\< -f1 | sed 's/Firmware[/]dfu[/]//')" work/iBSS.dec
 "$oscheck"/gaster decrypt work/"$(awk "/"${replace}"/{x=1}x&&/iBEC[.]/{print;exit}" work/BuildManifest.plist | grep '<string>' |cut -d\> -f2 |cut -d\< -f1 | sed 's/Firmware[/]dfu[/]//')" work/iBEC.dec
-"$oscheck"/iBoot64Patcher work/iBSS.dec work/iBSS.patched -n #was missing arg "-n" to unlock nvram shit
+"$oscheck"/iBoot64Patcher work/iBSS.dec work/iBSS.patched -n #was missing arg "-n" to unlock nvram shit xD
 "$oscheck"/img4 -i work/iBSS.patched -o sshramdisk/iBSS.img4 -M work/IM4M -A -T ibss
 "$oscheck"/iBoot64Patcher work/iBEC.dec work/iBEC.patched -n -b "rd=md0 debug=0x2014e -v wdt=-9999999"
 "$oscheck"/img4 -i work/iBEC.patched -o sshramdisk/iBEC.img4 -M work/IM4M -A -T ibec
